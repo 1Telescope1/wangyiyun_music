@@ -10,6 +10,7 @@ export const HeaderWrapper = styled.div`
     display: flex;
     justify-content: space-between;
 
+    ${(props) => props.theme.mixin.wrapv1};
 
   }
 
