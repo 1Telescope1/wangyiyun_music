@@ -5,7 +5,7 @@ import {shallowEqualApp, useAppDispatch, useAppSelector} from './store'
 import {changeMessageAction} from "@/store/modules/counter";
 import AppHeader from "@/components/app-header";
 import AppFooter from "@/components/app-footer";
-
+import {Button} from 'antd'
 
 function App() {
   const {count, message} = useAppSelector(
@@ -30,6 +30,7 @@ function App() {
         </Suspense>
       <AppFooter></AppFooter>
 
+      <Button>123</Button>
       {/*<h2>当前击数：{count}</h2>*/}
       {/*<h2>{message}</h2>*/}
       {/*<button onClick={() => handleChangeMessage("hhhh")}>改变message</button>*/}
