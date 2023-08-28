@@ -8,7 +8,7 @@ export function getTopBanner() {
 
 export function getHotRecommend() {
   return hyRequest.get({
-    url: '/personalized'
+    url: '/personalized?limit=8'
   })
 }
 

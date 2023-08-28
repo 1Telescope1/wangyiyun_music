@@ -41,6 +41,11 @@ const TopBanner: React.FC<IProps> = () => {
 
   }
 
+  function handleDot(index:number) {
+    setCurrentIndex(index)
+    bannerRef.current?.goTo(index)
+  }
+
   let bgImageUrl
   if(currentIndex>=0&&banners.length>0) {
     bgImageUrl=banners[currentIndex].imageUrl+'?imageView&blur=40x20'
@@ -65,7 +70,7 @@ const TopBanner: React.FC<IProps> = () => {
           <ul className='dots'>
             {banners.map((item,index)=>{
               return (
-                <li key={item.imageUrl}>
+                <li key={item.imageUrl} onClick={()=>handleDot(index)}>
                   <span className={classNames('item',{active:index===currentIndex })}></span>
                 </li>
               )
