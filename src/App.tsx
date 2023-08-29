@@ -6,6 +6,7 @@ import {changeMessageAction} from "@/store/modules/counter";
 import AppHeader from "@/components/app-header";
 import AppFooter from "@/components/app-footer";
 import {Button} from 'antd'
+import AppPlayerBar from "@/views/player/app-player-bar";
 
 function App() {
   const {count, message} = useAppSelector(
@@ -30,11 +31,8 @@ function App() {
         </Suspense>
       <AppFooter></AppFooter>
 
-      <Button>123</Button>
-      {/*<h2>当前击数：{count}</h2>*/}
-      {/*<h2>{message}</h2>*/}
-      {/*<button onClick={() => handleChangeMessage("hhhh")}>改变message</button>*/}
-
+      {/*播放器工具栏*/}
+      <AppPlayerBar></AppPlayerBar>
     </div>
   )
 }

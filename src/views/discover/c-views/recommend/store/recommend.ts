@@ -60,7 +60,6 @@ export const fetchSettleSinger = createAsyncThunk(
   'settlesinger',
   async (_, { dispatch }) => {
     const res = await getArtistList(5001, 5)
-    // dispatch()
     dispatch(changeSettleSingerAction(res.artists))
   }
 )
