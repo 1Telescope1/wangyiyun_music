@@ -52,6 +52,7 @@ export const BarControl = styled.div<IBarControl>`
   }
 
   .play {
+    cursor: pointer;
     width: 36px;
     height: 36px;
     margin: 0 8px;
@@ -144,6 +145,7 @@ export const BarOperator = styled.div<IBarOperator>`
   .btn {
     width: 25px;
     height: 25px;
+    cursor: pointer;
   }
 
   .left {
@@ -185,7 +187,11 @@ export const BarOperator = styled.div<IBarOperator>`
             return '-3px -344px'
         }
       }};
+
+
     }
+
+
 
     .playlist {
       padding-left: 18px;

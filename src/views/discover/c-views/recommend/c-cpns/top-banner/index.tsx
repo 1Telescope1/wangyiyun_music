@@ -15,7 +15,6 @@ interface IProps {
 
 const TopBanner: React.FC<IProps> = () => {
   const [currentIndex,setCurrentIndex]=useState(0)
-  const [bgImage, setBgImage] = useState<string>()
 
   const bannerRef=useRef<ElementRef<typeof Carousel>>(null)
 

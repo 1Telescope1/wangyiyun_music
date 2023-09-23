@@ -1,4 +1,6 @@
 import React,{ReactNode,memo} from 'react'
+import {PlayWrapper} from "@/views/player/style";
+import AppPlayerBar from "@/views/player/app-player-bar";
 
 interface IProps {
   children?:ReactNode
@@ -6,7 +8,9 @@ interface IProps {
 
 const Player: React.FC<IProps> = () => {
   return (
-    <div>123</div>
+    <PlayWrapper>
+      <AppPlayerBar></AppPlayerBar>
+    </PlayWrapper>
   )
 }
 

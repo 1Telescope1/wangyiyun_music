@@ -3,7 +3,7 @@ import type { FC, ReactNode } from 'react'
 import { ItemWrapper } from './style'
 import { getImageSize } from '@/utils/format'
 import { useAppDispatch } from '@/store'
-// import { fetchCurrentSongDataAction } from '@/views/player/store/player'
+import {fetchCurrentSongDataAction} from "@/views/player/store/player";
 
 interface IProps {
   children?: ReactNode
@@ -16,7 +16,7 @@ const TopRankingItem: FC<IProps> = (props) => {
 
   const dispatch = useAppDispatch()
   function handlePlayClick(id: number) {
-    // dispatch(fetchCurrentSongDataAction(id))
+    dispatch(fetchCurrentSongDataAction(id))
   }
 
   return (
@@ -24,7 +24,6 @@ const TopRankingItem: FC<IProps> = (props) => {
       <div className="header">
         <div className="image">
           <img src={getImageSize(itemData.coverImgUrl, 80)} alt="" />
-          <a href="" className="image_cover"></a>
         </div>
         <div className="info">
           <a href="">{itemData.name}</a>

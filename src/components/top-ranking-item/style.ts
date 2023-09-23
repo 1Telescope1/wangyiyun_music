@@ -91,7 +91,6 @@ export const ItemWrapper = styled.div`
         }
 
         .operate {
-          display: flex;
           align-items: center;
           display: none;
           width: 82px;

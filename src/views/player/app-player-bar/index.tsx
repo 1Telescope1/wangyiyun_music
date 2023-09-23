@@ -9,10 +9,11 @@ import { formatTime, getPlayerUrl } from '@/utils/handle-player'
 import {
   changeLyricIndexAction,
   changePlayModeAction,
-  changePlaySongAction
+  changePlaySongAction, fetchCurrentSongDataAction
 } from '../store/player'
 import styled, { StyleSheetManager } from 'styled-components';
 import isPropValid from '@emotion/is-prop-valid';
+import {getImageSize} from "@/utils/format";
 
 interface IProps {
   children?: ReactNode
@@ -25,8 +26,14 @@ const AppPlayerBar: FC<IProps> = () => {
   const [duration, setDuration] = useState(0)
   const [currentTime, setCurrentTime] = useState(0)
   const [progress, setProgress] = useState(0)
+  const [loopType,setLoopType]=useState('循环')
   const audioRef = useRef<HTMLAudioElement>(null)
 
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(fetchCurrentSongDataAction(186453))
+  }, []);
 
   /** 从redux中获取数据 */
   const { currentSong, lyrics, lyricIndex, playMode, playSongList } =
@@ -40,7 +47,7 @@ const AppPlayerBar: FC<IProps> = () => {
       }),
       shallowEqual
     )
-  const dispatch = useAppDispatch()
+
   /** 监听currentSong的变化 */
   useEffect(() => {
 
@@ -131,18 +138,33 @@ const AppPlayerBar: FC<IProps> = () => {
     isPaused
       ? audioRef.current?.play().catch(() => setIsPlaying(false))
       : audioRef.current?.pause()
+
     setIsPlaying(isPaused)
 
   }
 
   function handleChangeBtnClick(isNext = true) {
     dispatch(changePlaySongAction(isNext))
+
   }
 
   function handlePlayModeClick() {
     let newPlayMode = playMode + 1
     if (newPlayMode === 3) newPlayMode = 0
     dispatch(changePlayModeAction(newPlayMode))
+    changeLoopType(newPlayMode)
+
+  }
+
+
+  function changeLoopType(playMode:number) {
+    switch (playMode) {
+      case 1: setLoopType('随机')
+        break
+      case 2: setLoopType('单曲循环')
+        break
+      default : setLoopType('循环')
+    }
   }
 
   return (
@@ -166,14 +188,14 @@ const AppPlayerBar: FC<IProps> = () => {
           <BarPlayInfo>
             <NavLink to="/discover/player">
               <img
-                src="https://p2.music.126.net/OVkXDNmbk2uj6wE1KTZIwQ==/109951165203334337.jpg?param=34y34"
+                src={getImageSize(currentSong?.al?.picUrl,35)}
                 alt=""
               />
             </NavLink>
             <div className="info">
               <div className="song">
-                <span className="song-name">{currentSong.name}</span>
-                <span className="singer-name">{currentSong.ar[0].name}</span>
+                <span className="song-name">{currentSong?.name}</span>
+                <span className="singer-name">{currentSong?.ar?.[0]?.name}</span>
               </div>
               <div className="progress">
                 <Slider
@@ -201,6 +223,7 @@ const AppPlayerBar: FC<IProps> = () => {
               <button
                 className="btn sprite_playbar loop"
                 onClick={handlePlayModeClick}
+                title={loopType}
               ></button>
               <button className="btn sprite_playbar playlist"></button>
             </div>

@@ -5,8 +5,7 @@ import {shallowEqualApp, useAppDispatch, useAppSelector} from './store'
 import {changeMessageAction} from "@/store/modules/counter";
 import AppHeader from "@/components/app-header";
 import AppFooter from "@/components/app-footer";
-import {Button} from 'antd'
-import AppPlayerBar from "@/views/player/app-player-bar";
+import Player from "@/views/player";
 
 function App() {
   const {count, message} = useAppSelector(
@@ -32,7 +31,7 @@ function App() {
       <AppFooter></AppFooter>
 
       {/*播放器工具栏*/}
-      <AppPlayerBar></AppPlayerBar>
+      <Player></Player>
     </div>
   )
 }

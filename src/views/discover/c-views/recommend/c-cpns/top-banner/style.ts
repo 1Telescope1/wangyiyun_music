@@ -26,21 +26,6 @@ export const BannerLeft = styled.div`
     }
   }
 
-  .banner-list {
-    position: relative;
-  }
-
-  .banner-item {
-    position: absolute;
-    left: 0;
-    top: 0;
-    overflow: hidden;
-    height: 270px;
-    .image {
-      width: 100%;
-    }
-  }
-
   .fade-exit {
     opacity: 1;
   }
